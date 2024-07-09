@@ -1,5 +1,5 @@
 
-name: 1-periodic-test-bm
+name: periodic-test-bm
 
 on:
   workflow_dispatch:
@@ -7,16 +7,13 @@ on:
     paths:
       - .github/workflows/periodic-broken-link-checks.yml
   schedule:
-    - cron: '3 3 * * 3'
+    - cron: '1 1 * * *'
 
 jobs:
-  broken-link-checker:
+  broken-link-checker-bm-de-de:
     runs-on: ubuntu-latest
     steps:
-      # - name: Setup Pages
-      #   id: pages
-      #   uses: actions/configure-pages@v3
-      - name: Check broken links
+      - name: Check broken links on bm de-de
         env:
           INPUT_URL: https://www.bluemovement.com/de-de/
           EXCLUDE: |
@@ -33,3 +30,48 @@ jobs:
           export INPUT_CMD_PARAMS="--verbose --buffer-size=8192 --exclude=($( echo ${EXCLUDE} | tr ' ' '|' ))"
           wget -qO- https://raw.githubusercontent.com/ruzickap/action-my-broken-link-checker/v2/entrypoint.sh | bash
 
+  broken-link-checker-bm-nl-nl:
+    runs-on: ubuntu-latest
+    steps:
+      # - name: Setup Pages
+      #   id: pages
+      #   uses: actions/configure-pages@v3
+      - name: Check broken links on bm nl-nl
+        env:
+          INPUT_URL: https://www.bluemovement.com/nl-nl/
+          EXCLUDE: |
+            microsoft.com
+            a.storyblok.com
+            _next
+            popages.com
+            youtube
+            facebook
+            instagram
+            object
+         # INPUT_CMD_PARAMS: "--one-page-only --verbose --buffer-size=8192 --exclude=($( echo ${EXCLUDE} | tr ' ' '|' ))"
+        run: |
+          export INPUT_CMD_PARAMS="--verbose --buffer-size=8192 --exclude=($( echo ${EXCLUDE} | tr ' ' '|' ))"
+          wget -qO- https://raw.githubusercontent.com/ruzickap/action-my-broken-link-checker/v2/entrypoint.sh | bash
+
+  broken-link-checker-bm-nl-en:
+    runs-on: ubuntu-latest
+    steps:
+      # - name: Setup Pages
+      #   id: pages
+      #   uses: actions/configure-pages@v3
+      - name: Check broken links on bm nl-en
+        env:
+          INPUT_URL: https://www.bluemovement.com/nl-en/
+          EXCLUDE: |
+            microsoft.com
+            a.storyblok.com
+            _next
+            popages.com
+            youtube
+            facebook
+            instagram
+            object
+         # INPUT_CMD_PARAMS: "--one-page-only --verbose --buffer-size=8192 --exclude=($( echo ${EXCLUDE} | tr ' ' '|' ))"
+        run: |
+          export INPUT_CMD_PARAMS="--verbose --buffer-size=8192 --exclude=($( echo ${EXCLUDE} | tr ' ' '|' ))"
+          wget -qO- https://raw.githubusercontent.com/ruzickap/action-my-broken-link-checker/v2/entrypoint.sh | bash

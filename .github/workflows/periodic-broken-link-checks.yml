@@ -27,7 +27,7 @@ jobs:
             youtube
             facebook
             instagram
-            [object
+            object
          # INPUT_CMD_PARAMS: "--one-page-only --verbose --buffer-size=8192 --exclude=($( echo ${EXCLUDE} | tr ' ' '|' ))"
         run: |
           export INPUT_CMD_PARAMS="--verbose --buffer-size=8192 --exclude=($( echo ${EXCLUDE} | tr ' ' '|' ))"

@@ -1,5 +1,5 @@
 
-name: periodic-test-bm
+name: bluemovemnt-sitemap-scan
 
 on:
   workflow_dispatch:
@@ -10,10 +10,10 @@ on:
     - cron: '1 1 * * *'
 
 jobs:
-  broken-link-checker-bm-de-de:
+  de-de:
     runs-on: ubuntu-latest
     steps:
-      - name: Check broken links on bm de-de
+      - name: de-de
         env:
           INPUT_URL: https://www.bluemovement.com/de-de/
           EXCLUDE: |
@@ -27,16 +27,16 @@ jobs:
             object
          # INPUT_CMD_PARAMS: "--one-page-only --verbose --buffer-size=8192 --exclude=($( echo ${EXCLUDE} | tr ' ' '|' ))"
         run: |
-          export INPUT_CMD_PARAMS="--color=always --verbose --buffer-size=8192 --exclude=($( echo ${EXCLUDE} | tr ' ' '|' ))"
+          export INPUT_CMD_PARAMS="--follow-sitemap-xml --color=always --verbose --buffer-size=8192 --exclude=($( echo ${EXCLUDE} | tr ' ' '|' ))"
           wget -qO- https://raw.githubusercontent.com/ruzickap/action-my-broken-link-checker/v2/entrypoint.sh | bash
 
-  broken-link-checker-bm-nl-nl:
+  nl-nl:
     runs-on: ubuntu-latest
     steps:
       # - name: Setup Pages
       #   id: pages
       #   uses: actions/configure-pages@v3
-      - name: Check broken links on bm nl-nl
+      - name: nl-nl
         env:
           INPUT_URL: https://www.bluemovement.com/nl-nl/
           EXCLUDE: |
@@ -50,16 +50,16 @@ jobs:
             object
          # INPUT_CMD_PARAMS: "--one-page-only --verbose --buffer-size=8192 --exclude=($( echo ${EXCLUDE} | tr ' ' '|' ))"
         run: |
-          export INPUT_CMD_PARAMS="--color=always --verbose --buffer-size=8192 --exclude=($( echo ${EXCLUDE} | tr ' ' '|' ))"
+          export INPUT_CMD_PARAMS="--follow-sitemap-xml --color=always --verbose --buffer-size=8192 --exclude=($( echo ${EXCLUDE} | tr ' ' '|' ))"
           wget -qO- https://raw.githubusercontent.com/ruzickap/action-my-broken-link-checker/v2/entrypoint.sh | bash
 
-  broken-link-checker-bm-nl-en:
+  nl-en:
     runs-on: ubuntu-latest
     steps:
       # - name: Setup Pages
       #   id: pages
       #   uses: actions/configure-pages@v3
-      - name: Check broken links on bm nl-en
+      - name: nl-en
         env:
           INPUT_URL: https://www.bluemovement.com/nl-en/
           EXCLUDE: |
@@ -73,5 +73,5 @@ jobs:
             object
          # INPUT_CMD_PARAMS: "--one-page-only --verbose --buffer-size=8192 --exclude=($( echo ${EXCLUDE} | tr ' ' '|' ))"
         run: |
-          export INPUT_CMD_PARAMS="--color=always --verbose --buffer-size=8192 --exclude=($( echo ${EXCLUDE} | tr ' ' '|' ))"
+          export INPUT_CMD_PARAMS="--follow-sitemap-xml --color=always --verbose --buffer-size=8192 --exclude=($( echo ${EXCLUDE} | tr ' ' '|' ))"
           wget -qO- https://raw.githubusercontent.com/ruzickap/action-my-broken-link-checker/v2/entrypoint.sh | bash

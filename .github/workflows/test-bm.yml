@@ -1,9 +1,8 @@
-name: test-bm
-
 on:
   schedule:
     - cron: '0 0 * * 0'
 
+name: Check markdown links
 jobs:
   my-broken-link-checker:
     name: Check broken links
@@ -12,5 +11,5 @@ jobs:
       - name: Check
         uses: ruzickap/action-my-broken-link-checker@v2
         with:
-          url: https://www.bluemovement.com
+          url: https://www.mkdocs.org
           cmd_params: "--one-page-only --max-connections=3 --color=always"  # Check just one page

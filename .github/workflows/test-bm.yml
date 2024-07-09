@@ -20,5 +20,5 @@ jobs:
       - name: Check broken links
         uses: ruzickap/action-my-broken-link-checker@v2
         with:
-          url: https://bluemovement.com
+          url: https://bluemovement.com/de-de/
           cmd_params: '--buffer-size=8192 --max-connections=10 --color=always --header="User-Agent:curl/7.54.0" --timeout=20'

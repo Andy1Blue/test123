@@ -21,7 +21,6 @@ jobs:
           INPUT_URL: https://www.bluemovement.com/de-de/
           EXCLUDE: |
             microsoft.com
-          INPUT_PAGES_PATH: public
           INPUT_CMD_PARAMS: '--verbose --buffer-size=8192 --max-connections=10 --color=always --skip-tls-verification --exclude="(mylabs.dev|linkedin.com)"'
         run: |
           wget -qO- https://raw.githubusercontent.com/ruzickap/action-my-broken-link-checker/v2/entrypoint.sh | bash

@@ -5,8 +5,8 @@ on:
   push:
     paths:
       - .github/workflows/test-bm.yml
-  schedule:
-    - cron: '3 3 * * 3'
+  # schedule:
+  #   - cron: '3 3 * * 3'
 
 jobs:
   broken-link-checker:

@@ -15,7 +15,7 @@ jobs:
     steps:
       - name: de-de
         env:
-          INPUT_URL: https://www.qa.bluemovement.com/de-de/?dev-login-password=bWFsYmVj
+          INPUT_URL: https://www.qa.bluemovement.com/de-de/
           EXCLUDE: |
             microsoft.com
             a.storyblok.com
@@ -27,7 +27,7 @@ jobs:
             object
          # INPUT_CMD_PARAMS: "--one-page-only --verbose --buffer-size=8192 --exclude=($( echo ${EXCLUDE} | tr ' ' '|' ))"
         run: |
-          export INPUT_CMD_PARAMS="--verbose --color=always --buffer-size=8192 --exclude=($( echo ${EXCLUDE} | tr ' ' '|' ))"
+          export INPUT_CMD_PARAMS="--header=dev-login-password:bWFsYmVj --verbose --color=always --buffer-size=8192 --exclude=($( echo ${EXCLUDE} | tr ' ' '|' ))"
           wget -qO- https://raw.githubusercontent.com/ruzickap/action-my-broken-link-checker/v2/entrypoint.sh | bash
 
   nl-nl:
@@ -50,7 +50,7 @@ jobs:
             object
          # INPUT_CMD_PARAMS: "--one-page-only --verbose --buffer-size=8192 --exclude=($( echo ${EXCLUDE} | tr ' ' '|' ))"
         run: |
-          export INPUT_CMD_PARAMS="--verbose --color=always --buffer-size=8192 --exclude=($( echo ${EXCLUDE} | tr ' ' '|' ))"
+          export INPUT_CMD_PARAMS="--header=dev-login-password:bWFsYmVj --verbose --color=always --buffer-size=8192 --exclude=($( echo ${EXCLUDE} | tr ' ' '|' ))"
           wget -qO- https://raw.githubusercontent.com/ruzickap/action-my-broken-link-checker/v2/entrypoint.sh | bash
 
   nl-en:
@@ -73,5 +73,5 @@ jobs:
             object
          # INPUT_CMD_PARAMS: "--one-page-only --verbose --buffer-size=8192 --exclude=($( echo ${EXCLUDE} | tr ' ' '|' ))"
         run: |
-          export INPUT_CMD_PARAMS="--verbose --color=always --buffer-size=8192 --exclude=($( echo ${EXCLUDE} | tr ' ' '|' ))"
+          export INPUT_CMD_PARAMS="--header=dev-login-password:bWFsYmVj --verbose --color=always --buffer-size=8192 --exclude=($( echo ${EXCLUDE} | tr ' ' '|' ))"
           wget -qO- https://raw.githubusercontent.com/ruzickap/action-my-broken-link-checker/v2/entrypoint.sh | bash

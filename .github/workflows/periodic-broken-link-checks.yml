@@ -1,5 +1,5 @@
 
-name: bluemovemnt-sitemap-scan
+name: bluemovemnt-qa-sitemap-scan
 
 on:
   workflow_dispatch:
@@ -15,7 +15,7 @@ jobs:
     steps:
       - name: de-de
         env:
-          INPUT_URL: https://www.bluemovement.com/de-de/
+          INPUT_URL: https://www.qa.bluemovement.com/de-de/?dev-login-password=bWFsYmVj
           EXCLUDE: |
             microsoft.com
             a.storyblok.com
@@ -27,7 +27,7 @@ jobs:
             object
          # INPUT_CMD_PARAMS: "--one-page-only --verbose --buffer-size=8192 --exclude=($( echo ${EXCLUDE} | tr ' ' '|' ))"
         run: |
-          export INPUT_CMD_PARAMS="--format=junit --color=always --buffer-size=8192 --exclude=($( echo ${EXCLUDE} | tr ' ' '|' ))"
+          export INPUT_CMD_PARAMS="--color=always --buffer-size=8192 --exclude=($( echo ${EXCLUDE} | tr ' ' '|' ))"
           wget -qO- https://raw.githubusercontent.com/ruzickap/action-my-broken-link-checker/v2/entrypoint.sh | bash
 
   nl-nl:
@@ -38,7 +38,7 @@ jobs:
       #   uses: actions/configure-pages@v3
       - name: nl-nl
         env:
-          INPUT_URL: https://www.bluemovement.com/nl-nl/
+          INPUT_URL: https://www.qa.bluemovement.com/nl-nl/?dev-login-password=bWFsYmVj
           EXCLUDE: |
             microsoft.com
             a.storyblok.com
@@ -61,7 +61,7 @@ jobs:
       #   uses: actions/configure-pages@v3
       - name: nl-en
         env:
-          INPUT_URL: https://www.bluemovement.com/nl-en/
+          INPUT_URL: https://www.qa.bluemovement.com/nl-en/?dev-login-password=bWFsYmVj
           EXCLUDE: |
             microsoft.com
             a.storyblok.com

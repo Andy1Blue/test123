@@ -28,7 +28,7 @@ jobs:
             object
          # INPUT_CMD_PARAMS: "--one-page-only --verbose --buffer-size=8192 --exclude=($( echo ${EXCLUDE} | tr ' ' '|' ))"
         run: |
-          export INPUT_CMD_PARAMS="--header=dev-login-password:$( echo ${QA_PASSWORD}) --verbose --color=always --buffer-size=8192 --exclude=($( echo ${EXCLUDE} | tr ' ' '|' ))"
+          export INPUT_CMD_PARAMS="--max-redirections=10 --skip-tls-verification --timeout=30 --header=dev-login-password:$( echo ${QA_PASSWORD}) --verbose --color=always --buffer-size=8192 --exclude=($( echo ${EXCLUDE} | tr ' ' '|' ))"
           wget -qO- https://raw.githubusercontent.com/ruzickap/action-my-broken-link-checker/v2/entrypoint.sh | bash
 
   nl-nl:
@@ -52,7 +52,7 @@ jobs:
             object
          # INPUT_CMD_PARAMS: "--one-page-only --verbose --buffer-size=8192 --exclude=($( echo ${EXCLUDE} | tr ' ' '|' ))"
         run: |
-          export INPUT_CMD_PARAMS="--header=dev-login-password:$( echo ${QA_PASSWORD}) --verbose --color=always --buffer-size=8192 --exclude=($( echo ${EXCLUDE} | tr ' ' '|' ))"
+          export INPUT_CMD_PARAMS="--max-redirections=10 --skip-tls-verification --timeout=30 --header=dev-login-password:$( echo ${QA_PASSWORD}) --verbose --color=always --buffer-size=8192 --exclude=($( echo ${EXCLUDE} | tr ' ' '|' ))"
           wget -qO- https://raw.githubusercontent.com/ruzickap/action-my-broken-link-checker/v2/entrypoint.sh | bash
 
   nl-en:
@@ -76,5 +76,5 @@ jobs:
             object
          # INPUT_CMD_PARAMS: "--one-page-only --verbose --buffer-size=8192 --exclude=($( echo ${EXCLUDE} | tr ' ' '|' ))"
         run: |
-          export INPUT_CMD_PARAMS="--header=dev-login-password:$( echo ${QA_PASSWORD}) --verbose --color=always --buffer-size=8192 --exclude=($( echo ${EXCLUDE} | tr ' ' '|' ))"
+          export INPUT_CMD_PARAMS="--max-redirections=10 --skip-tls-verification --timeout=30 --header=dev-login-password:$( echo ${QA_PASSWORD}) --verbose --color=always --buffer-size=8192 --exclude=($( echo ${EXCLUDE} | tr ' ' '|' ))"
           wget -qO- https://raw.githubusercontent.com/ruzickap/action-my-broken-link-checker/v2/entrypoint.sh | bash

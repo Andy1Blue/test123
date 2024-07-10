@@ -39,6 +39,7 @@ jobs:
       #   uses: actions/configure-pages@v3
       - name: nl-nl
         env:
+          QA_PASSWORD: ${{ secrets.QA_PASSWORD }}
           INPUT_URL: https://www.qa.bluemovement.com/nl-nl/
           EXCLUDE: |
             microsoft.com
@@ -62,6 +63,7 @@ jobs:
       #   uses: actions/configure-pages@v3
       - name: nl-en
         env:
+          QA_PASSWORD: ${{ secrets.QA_PASSWORD }}
           INPUT_URL: https://www.qa.bluemovement.com/nl-en/
           EXCLUDE: |
             microsoft.com

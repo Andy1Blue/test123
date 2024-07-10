@@ -6,8 +6,8 @@ on:
   push:
     paths:
       - .github/workflows/periodic-broken-link-checks.yml
-  schedule:
-    - cron: '1 1 * * *'
+  # schedule:
+  #   - cron: '1 1 * * *'
 
 jobs:
   de-de:

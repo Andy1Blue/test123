@@ -1,0 +1,31 @@
+name: TEST-bluemovemnt-qa-sitemap-scan
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - .github/workflows/periodic-broken-link-checks.yml
+  # schedule:
+  #   - cron: '1 1 * * *'
+
+jobs:
+  de-de:
+    runs-on: ubuntu-latest
+    steps:
+      - name: de-de
+        env:
+          QA_PASSWORD: ${{ secrets.QA_PASSWORD }}
+          INPUT_URL: https://www.qa.bluemovement.com/de-de/sitemap.xml
+          EXCLUDE: |
+            microsoft.com
+            a.storyblok.com
+            _next
+            popages.com
+            youtube
+            facebook
+            instagram
+            object
+         # INPUT_CMD_PARAMS: "--one-page-only --verbose --buffer-size=8192 --exclude=($( echo ${EXCLUDE} | tr ' ' '|' ))"
+        run: |
+          export INPUT_CMD_PARAMS="--follow-sitemap-xml --max-redirections=10 --skip-tls-verification --timeout=30 --header=dev-login-password:$( echo ${QA_PASSWORD}) --verbose --color=always --buffer-size=8192 --exclude=($( echo ${EXCLUDE} | tr ' ' '|' ))"
+          wget -qO- https://raw.githubusercontent.com/ruzickap/action-my-broken-link-checker/v2/entrypoint.sh | bash

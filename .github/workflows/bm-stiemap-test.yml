@@ -15,7 +15,7 @@ jobs:
       - name: de-de
         env:
           QA_PASSWORD: ${{ secrets.QA_PASSWORD }}
-          INPUT_URL: https://www.bluemovement.com/de-de/sitemap.xml
+          INPUT_URL: https://www.bluemovement.de/sitemap.xml
           #https://nextjs.org/sitemap.xml
           #https://www.bluemovement.com/de-de/sitemap.xml
           EXCLUDE: |

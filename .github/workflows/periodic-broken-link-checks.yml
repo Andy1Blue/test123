@@ -49,7 +49,7 @@ jobs:
             object
          # INPUT_CMD_PARAMS: "--one-page-only --verbose --buffer-size=8192 --exclude=($( echo ${EXCLUDE} | tr ' ' '|' ))"
         run: |
-          export INPUT_CMD_PARAMS="--max-connections 1 --verbose --one-page-only --header=dev-login-password:$( echo ${QA_PASSWORD}) --color=always --buffer-size=8192 --exclude=($( echo ${EXCLUDE} | tr ' ' '|' ))"
+          export INPUT_CMD_PARAMS="--max-connections 1 --timeout 30 --verbose --one-page-only --header=dev-login-password:$( echo ${QA_PASSWORD}) --color=always --buffer-size=8192 --exclude=($( echo ${EXCLUDE} | tr ' ' '|' ))"
           wget -qO- https://raw.githubusercontent.com/ruzickap/action-my-broken-link-checker/v2/entrypoint.sh | bash
 
   nl-nl:

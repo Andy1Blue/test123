@@ -31,13 +31,13 @@ jobs:
           export INPUT_CMD_PARAMS="--verbose --max-redirections=10 --skip-tls-verification --timeout=30 --header=dev-login-password:$( echo ${QA_PASSWORD}) --verbose --color=always --buffer-size=8192 --exclude=($( echo ${EXCLUDE} | tr ' ' '|' ))"
           wget -qO- https://raw.githubusercontent.com/ruzickap/action-my-broken-link-checker/v2/entrypoint.sh | bash
 
-  test:
+  test-sitemap:
     runs-on: ubuntu-latest
     steps:
       - name: de-de
         env:
           QA_PASSWORD: ${{ secrets.QA_PASSWORD }}
-          INPUT_URL: https://www.qa.bluemovement.com/de-de/
+          INPUT_URL: https://www.qa.bluemovement.com/de-de/sitemap.xml
           EXCLUDE: |
             microsoft.com
             a.storyblok.com

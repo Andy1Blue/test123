@@ -1,5 +1,5 @@
 
-name: bluemovemnt-qa-sitemap-scan
+name: NEW-bluemovemnt-qa-sitemap-scan
 
 on:
   workflow_dispatch:
@@ -29,6 +29,27 @@ jobs:
          # INPUT_CMD_PARAMS: "--one-page-only --verbose --buffer-size=8192 --exclude=($( echo ${EXCLUDE} | tr ' ' '|' ))"
         run: |
           export INPUT_CMD_PARAMS="--verbose --max-redirections=10 --skip-tls-verification --timeout=30 --header=dev-login-password:$( echo ${QA_PASSWORD}) --verbose --color=always --buffer-size=8192 --exclude=($( echo ${EXCLUDE} | tr ' ' '|' ))"
+          wget -qO- https://raw.githubusercontent.com/ruzickap/action-my-broken-link-checker/v2/entrypoint.sh | bash
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: de-de
+        env:
+          QA_PASSWORD: ${{ secrets.QA_PASSWORD }}
+          INPUT_URL: https://www.qa.bluemovement.com/de-de/
+          EXCLUDE: |
+            microsoft.com
+            a.storyblok.com
+            _next
+            popages.com
+            youtube
+            facebook
+            instagram
+            object
+         # INPUT_CMD_PARAMS: "--one-page-only --verbose --buffer-size=8192 --exclude=($( echo ${EXCLUDE} | tr ' ' '|' ))"
+        run: |
+          export INPUT_CMD_PARAMS="--max-connections 1 --verbose --one-page-only --header=dev-login-password:$( echo ${QA_PASSWORD}) --color=always --buffer-size=8192 --exclude=($( echo ${EXCLUDE} | tr ' ' '|' ))"
           wget -qO- https://raw.githubusercontent.com/ruzickap/action-my-broken-link-checker/v2/entrypoint.sh | bash
 
   nl-nl:

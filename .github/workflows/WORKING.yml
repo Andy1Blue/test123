@@ -1,0 +1,70 @@
+name: bluemovement-qa-sitemap-check
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - .github/workflows/sitemap-check.yml
+  # schedule:
+  #   - cron: '1 1 * * *'
+
+jobs:
+  de-de:
+    runs-on: ubuntu-latest
+    steps:
+      - name: de-de
+        env:
+          QA_PASSWORD: ${{ secrets.QA_PASSWORD }}
+          INPUT_URL: https://www.qa.bluemovement.com/de-de/sitemap.xml
+          EXCLUDE: |
+            microsoft.com
+            a.storyblok.com
+            _next
+            popages.com
+            youtube
+            facebook
+            instagram
+            object
+        run: |
+          export INPUT_CMD_PARAMS="--max-connections 1 --timeout 30 --verbose --one-page-only --header=dev-login-password:$( echo ${QA_PASSWORD}) --color=always --buffer-size=8192 --exclude=($( echo ${EXCLUDE} | tr ' ' '|' ))"
+          wget -qO- https://raw.githubusercontent.com/ruzickap/action-my-broken-link-checker/v2/entrypoint.sh | bash
+
+  nl-nl:
+    runs-on: ubuntu-latest
+    steps:
+      - name: nl-nl
+        env:
+          QA_PASSWORD: ${{ secrets.QA_PASSWORD }}
+          INPUT_URL: https://www.qa.bluemovement.com/nl-nl/
+          EXCLUDE: |
+            microsoft.com
+            a.storyblok.com
+            _next
+            popages.com
+            youtube
+            facebook
+            instagram
+            object
+        run: |
+          export INPUT_CMD_PARAMS="--max-connections 1 --timeout 30 --verbose --one-page-only --header=dev-login-password:$( echo ${QA_PASSWORD}) --color=always --buffer-size=8192 --exclude=($( echo ${EXCLUDE} | tr ' ' '|' ))"
+          wget -qO- https://raw.githubusercontent.com/ruzickap/action-my-broken-link-checker/v2/entrypoint.sh | bash
+
+  nl-en:
+    runs-on: ubuntu-latest
+    steps:
+      - name: nl-en
+        env:
+          QA_PASSWORD: ${{ secrets.QA_PASSWORD }}
+          INPUT_URL: https://www.qa.bluemovement.com/nl-en/
+          EXCLUDE: |
+            microsoft.com
+            a.storyblok.com
+            _next
+            popages.com
+            youtube
+            facebook
+            instagram
+            object
+        run: |
+          export INPUT_CMD_PARAMS="--max-connections 1 --timeout 30 --verbose --one-page-only --header=dev-login-password:$( echo ${QA_PASSWORD}) --color=always --buffer-size=8192 --exclude=($( echo ${EXCLUDE} | tr ' ' '|' ))"
+          wget -qO- https://raw.githubusercontent.com/ruzickap/action-my-broken-link-checker/v2/entrypoint.sh | bash

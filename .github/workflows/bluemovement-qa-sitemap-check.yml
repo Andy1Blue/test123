@@ -35,7 +35,7 @@ jobs:
       - name: nl-nl
         env:
           QA_PASSWORD: ${{ secrets.QA_PASSWORD }}
-          INPUT_URL: https://www.qa.bluemovement.com/nl-nl/
+          INPUT_URL: https://www.qa.bluemovement.com/nl-nl/sitemap.xml
           EXCLUDE: |
             microsoft.com
             a.storyblok.com
@@ -55,7 +55,7 @@ jobs:
       - name: nl-en
         env:
           QA_PASSWORD: ${{ secrets.QA_PASSWORD }}
-          INPUT_URL: https://www.qa.bluemovement.com/nl-en/
+          INPUT_URL: https://www.qa.bluemovement.com/nl-en/sitemap.xml
           EXCLUDE: |
             microsoft.com
             a.storyblok.com
